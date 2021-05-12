@@ -1,4 +1,4 @@
-import * as di from 'inversify';
+import { injectable } from 'inversify';
 import 'reflect-metadata';
 
 export interface Warrior {
@@ -6,7 +6,7 @@ export interface Warrior {
   sneak: () => string;
 }
 
-@di.injectable()
+@injectable()
 class Ninja implements Warrior {
   public constructor() {}
 
