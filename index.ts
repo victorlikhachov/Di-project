@@ -4,6 +4,7 @@ import { container, lazyInject } from './dicontainer';
 import { IWarrior } from './warrior';
 import { TYPES } from './types';
 import { IWeapon } from './iweapon';
+import { NamedWarrior } from './named-warrior';
 
 class WarriorFactory {
   public getWarriorByName(name: string): IWarrior {
@@ -11,17 +12,6 @@ class WarriorFactory {
   }
 }
 
-class NamedWarrior implements IWarrior {
-  @lazyInject(TYPES.Weapon)
-  public weapon: IWeapon;
-  public constructor(public name: string) {}
-  public fight() {
-    return `My name: '${this.name}';  I do: '${this.weapon.hit()}''`;
-  }
-  public sneak() {
-    return 'sneak';
-  }
-}
 
 var ninja = container.get<IWarrior>(TYPES.Warrior);
 const fight = ninja.fight();
