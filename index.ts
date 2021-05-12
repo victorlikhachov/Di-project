@@ -1,12 +1,9 @@
 // Import stylesheets
 import './style.css';
-import { container, lazyInject } from './dicontainer';
 import { IWarrior } from './warrior';
 import { TYPES } from './types';
-import { IWeapon } from './iweapon';
-import { NamedWarrior } from './named-warrior';
-import { WarriorFactory } from './warrior_factory';
 import { IWarriorFactory } from './iwarriorfactory';
+import { container } from './inversify.config';
 
 var ninja = container.get<IWarrior>(TYPES.Warrior);
 const fight = ninja.fight();
