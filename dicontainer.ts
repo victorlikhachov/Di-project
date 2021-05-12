@@ -18,11 +18,6 @@ class Ninja implements Warrior {
   }
 }
 
-export let TYPES = {
-  Warrior: Symbol('Warrior'),
-  Weapon: Symbol('Weapon'),
-  ThrowableWeapon: Symbol('ThrowableWeapon')
-};
 
 export var container = new di.Container();
 
