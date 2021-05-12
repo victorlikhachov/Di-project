@@ -5,12 +5,8 @@ import { IWarrior } from './warrior';
 import { TYPES } from './types';
 import { IWeapon } from './iweapon';
 import { NamedWarrior } from './named-warrior';
+import { WarriorFactory } from './warrior_factory';
 
-class WarriorFactory {
-  public getWarriorByName(name: string): IWarrior {
-    return new NamedWarrior(name);
-  }
-}
 
 
 var ninja = container.get<IWarrior>(TYPES.Warrior);
@@ -21,4 +17,4 @@ const namedWarrior = factory.getWarriorByName('Victor');
 const namedWarriorCry = namedWarrior.fight();
 
 const appDiv = document.getElementById('app');
-appDiv.innerHTML = `<h1>Ninja says: ${namedWarriorCry}</h1>`;
+appDiv.innerHTML = `<h1>${namedWarriorCry}</h1>`;
