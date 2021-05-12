@@ -1,5 +1,4 @@
 import { inject } from 'inversify';
-import { lazyInject } from './dicontainer';
 import { IWeapon } from './iweapon';
 import { TYPES } from './types';
 import { IWarrior } from './warrior';

@@ -1,4 +1,4 @@
-import { Container, injectable, interfaces } from 'inversify';
+import { injectable, interfaces } from 'inversify';
 import { IWarriorFactory } from './iwarriorfactory';
 import { IWeapon } from './iweapon';
 import { NamedWarrior } from './named-warrior';
