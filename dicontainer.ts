@@ -7,3 +7,5 @@ import { IWarrior } from './warrior';
 export var container = new Container();
 
 container.bind<IWarrior>(TYPES.Warrior).to(Ninja);
+
+const { lazyInject } = getDecorators(container, false);
