@@ -1,10 +1,26 @@
 // Import stylesheets
 import './style.css';
-import { container, Warrior, TYPES } from './dicontainer';
+import { container, lazyInject } from './dicontainer';
+import { IWarrior } from './warrior';
+import { TYPES } from './types';
 
-var ninja = container.get<Warrior>(TYPES.Warrior);
+class WarriorFactory {
+  @lazyInject(TYPES.Warrior)
+  warrior: IWarrior;
+}
+
+class NamedWarrior implements IWarrior {
+  public constructor(public name:string){}
+  fight: () => string;
+  sneak: () => string;
+;
+}
+
+var ninja = container.get<IWarrior>(TYPES.Warrior);
 const fight = ninja.fight();
 
-// Write TypeScript code!
+const a = new WarriorFactory();
+const s = a.warrior.fight();
+
 const appDiv = document.getElementById('app');
 appDiv.innerHTML = `<h1>Ninja says: ${fight}</h1>`;
