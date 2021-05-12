@@ -3,6 +3,7 @@ import './style.css';
 import { container, lazyInject } from './dicontainer';
 import { IWarrior } from './warrior';
 import { TYPES } from './types';
+import { IWeapon } from './iweapon';
 
 class WarriorFactory {
   @lazyInject(TYPES.Warrior)
@@ -10,6 +11,8 @@ class WarriorFactory {
 }
 
 class NamedWarrior implements IWarrior {
+  @lazyInject(TYPES.Weapon)
+  public weapon: IWeapon;
   public constructor(public name:string){}
   fight: () => string;
   sneak: () => string;
