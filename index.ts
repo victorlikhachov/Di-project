@@ -6,13 +6,12 @@ import { TYPES } from './types';
 import { IWeapon } from './iweapon';
 import { NamedWarrior } from './named-warrior';
 import { WarriorFactory } from './warrior_factory';
-
-
+import { IWarriorFactory } from './iwarriorfactory';
 
 var ninja = container.get<IWarrior>(TYPES.Warrior);
 const fight = ninja.fight();
 
-const factory = new WarriorFactory();
+const factory = container.get<IWarriorFactory>(TYPES.WarriorFactory);
 const namedWarrior = factory.getWarriorByName('Victor');
 const namedWarriorCry = namedWarrior.fight();
 

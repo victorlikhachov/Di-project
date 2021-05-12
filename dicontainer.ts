@@ -11,12 +11,13 @@ import { WarriorFactory } from './warrior_factory';
 
 export var container = new Container();
 
-
 container.bind<IWeapon>(TYPES.Weapon).to(Katana);
 container.bind<IWarrior>(TYPES.Warrior).to(Ninja);
-container.bind<IWarriorFactory>(TYPES.WarriorFactory)
-     .toDynamicValue((context: interfaces.Context) => {
-             return new WarriorFactory()}); 
+container
+  .bind<IWarriorFactory>(TYPES.WarriorFactory)
+  .toDynamicValue((context: interfaces.Context) => {
+    return new WarriorFactory(context.container);
+  });
 
 const { lazyInject } = getDecorators(container, false);
 export { lazyInject };
