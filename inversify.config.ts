@@ -14,11 +14,7 @@ export var container = new Container();
 
 container.bind<IWeapon>(TYPES.Weapon).to(Katana);
 container.bind<IWarrior>(TYPES.Warrior).to(Ninja);
-container
-  .bind<IWarriorFactory>(TYPES.WarriorFactory)
-  .toDynamicValue((context: interfaces.Context) => {
-    return new WarriorFactory(context.container);
-  });
+container.bind<IWarriorFactory>(TYPES.WarriorFactory).to(WarriorFactory);
 
 container
   .bind<interfaces.Factory<IWarrior>>('Factory<IWarrior>')
