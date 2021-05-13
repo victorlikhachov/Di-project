@@ -1,4 +1,4 @@
-import { injectable, interfaces } from 'inversify';
+import { inject, injectable, interfaces } from 'inversify';
 import { IWarriorFactory } from './iwarriorfactory';
 import { IWeapon } from './iweapon';
 import { NamedWarrior } from './named-warrior';
@@ -7,9 +7,11 @@ import { IWarrior } from './warrior';
 
 @injectable()
 export class WarriorFactory implements IWarriorFactory {
-  public constructor (private container: interfaces.Container){};
-  public getWarriorByName(name: string): IWarrior {
-    var weapon = this.container.get<IWeapon>(TYPES.Weapon);
-    return new NamedWarrior(name,weapon);
+  private _warriofFactory: (name: string) => IWarrior;
+  public constructor (@inject("Factory<IWarrior>") factoryFn: () => (name:string) => IWarrior){
+    this._warriofFactory=factoryFn();
+  };
+  public getWarriorByName(name: string): IWarrior {    
+    return this._warriofFactory(name);
   }
 }
