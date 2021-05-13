@@ -1,5 +1,5 @@
-import { IWarrior } from "./warrior";
+import { IWarrior } from './warrior';
 
 export interface IWarriorFactory {
-  getWarriorByName(name: string): IWarrior;
+  getWarriorFactory(): (name: string) => IWarrior;
 }

@@ -16,12 +16,11 @@ const namedWarriorCry = namedWarrior.fight();
 const propertyInjectionWarrior = new PropertyInjectionWarrior('Hela');
 const helaWarriorCry = propertyInjectionWarrior.fight();
 
-const a = container.get<(name:string)=> IWarrior>('Factory<IWarrior>');
-const w = a('Prabh')
-const qqq = w.fight()
+const factoryFn = container.get<() => (name:string) => IWarrior>('Factory<IWarrior>');
+const warriorsFactory=factoryFn()
 
 const appDiv = document.getElementById('app');
 appDiv.innerHTML = `<h1>[from factory] ${namedWarriorCry}</h1>
-                    <h1>[resolved] ${qqq}</h1>
+                    <h1>[resolved] ${warriorsFactory('Prabh').fight()}</h1>
                     <h1>[resolved] ${fight}</h1>
                     <h1>${helaWarriorCry}</h1>`;
