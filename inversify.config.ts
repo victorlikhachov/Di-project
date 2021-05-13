@@ -25,5 +25,14 @@ container
     };
   });
 
+container
+  .bind<interfaces.Factory<IWarrior>>('Factory2<IWarrior>')
+  .toFactory<IWarrior>((context: interfaces.Context) => {
+    return (name: string) => {
+      let weapon = context.container.get<IWeapon>(TYPES.Weapon);
+      return new NamedWarrior(name, weapon);
+    };
+  });
+
 const { lazyInject } = getDecorators(container, false);
 export { lazyInject };
