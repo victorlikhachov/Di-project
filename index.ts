@@ -7,21 +7,20 @@ import { container } from './inversify.config';
 import { PropertyInjectionWarrior } from './property-injection-warrior';
 
 var ninja = container.get<IWarrior>(TYPES.Warrior);
-const fight = ninja.fight();
 
 const factoryGenerator = container.get<IWarriorFactory>(TYPES.WarriorFactory);
 const namedWarrior = factoryGenerator.getWarriorFactory()('Victor');
 
-const warrior_factory = container.get<(name: string) => IWarrior>(
+const warrior_factory_func = container.get<(name: string) => IWarrior>(
   TYPES.WarriorFactoryFunc
 );
-const teerathWarrior = warrior_factory('Teerath');
+const teerathWarrior = warrior_factory_func('Teerath');
 
 const propertyInjectionWarrior = new PropertyInjectionWarrior('Hela');
 const helaWarriorCry = propertyInjectionWarrior.fight();
 
 const appDiv = document.getElementById('app');
-appDiv.innerHTML = `<h1>[from factory] ${namedWarrior.fight()}</h1>
-                    <h1>[resolved] ${fight}</h1>
-                    <h1>[resolved] ${teerathWarrior.fight()}</h1>
+appDiv.innerHTML = `<h1>[from factory class] ${namedWarrior.fight()}</h1>
+                    <h1>[resolved] ${ninja.fight()}</h1>
+                    <h1>[factory func] ${teerathWarrior.fight()}</h1>
                     <h1>${helaWarriorCry}</h1>`;
