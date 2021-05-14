@@ -9,10 +9,11 @@ import { Katana } from './katana';
 import { IWarriorFactory } from './iwarriorfactory';
 import { WarriorFactory } from './warrior_factory';
 import { NamedWarrior } from './named-warrior';
+import { weapons_module } from './weapons-module';
 
 export var container = new Container();
 
-container.bind<IWeapon>(TYPES.Weapon).to(Katana);
+//container.bind<IWeapon>(TYPES.Weapon).to(Katana);
 container.bind<IWarrior>(TYPES.Warrior).to(Ninja);
 container.bind<IWarriorFactory>(TYPES.WarriorFactory).to(WarriorFactory);
 
@@ -34,5 +35,6 @@ container
     };
   });
 
+container.load(weapons_module);
 const { lazyInject } = getDecorators(container, false);
 export { lazyInject };
