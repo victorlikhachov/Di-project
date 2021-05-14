@@ -15,14 +15,14 @@ export const warriors_module = new ContainerModule(
   ) => {
     bind<IWarrior>(TYPES.Warrior).to(Ninja);
     bind<IWarriorFactory>(TYPES.WarriorFactory).to(WarriorFactory);
-    bind<interfaces.Factory<IWarrior>>('Factory<IWarrior>').toFactory<IWarrior>(
-      (context: interfaces.Context) => {
-        return () => (name: string) => {
-          let weapon = context.container.get<IWeapon>(TYPES.Weapon);
-          return new NamedWarrior(name, weapon);
-        };
-      }
-    );
+    bind<interfaces.Factory<IWarrior>>(TYPES.WarriorFactoryBuilder).toFactory<
+      IWarrior
+    >((context: interfaces.Context) => {
+      return () => (name: string) => {
+        let weapon = context.container.get<IWeapon>(TYPES.Weapon);
+        return new NamedWarrior(name, weapon);
+      };
+    });
 
     bind<interfaces.Factory<IWarrior>>(TYPES.WarriorFactoryFunc).toFactory<
       IWarrior
