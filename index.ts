@@ -14,7 +14,7 @@ const namedWarrior = factoryGenerator.getWarriorFactory()('Victor');
 const namedWarriorCry = namedWarrior.fight();
 
 const warrior_factory = container.get<(name: string) => IWarrior>(
-  'Factory2<IWarrior>'
+  TYPES.WarriorFactoryFunc
 );
 const teerathWarrior = warrior_factory('Teerath');
 

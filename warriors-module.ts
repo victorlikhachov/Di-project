@@ -24,7 +24,7 @@ export const warriors_module = new ContainerModule(
       }
     );
 
-    bind<interfaces.Factory<IWarrior>>('Factory2<IWarrior>').toFactory<
+    bind<interfaces.Factory<IWarrior>>(TYPES.WarriorFactoryFunc).toFactory<
       IWarrior
     >((context: interfaces.Context) => {
       return (name: string) => {

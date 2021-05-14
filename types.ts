@@ -1,5 +1,6 @@
 export let TYPES = {
   Warrior: Symbol('Warrior'),
   Weapon: Symbol('Weapon'),
-  WarriorFactory: Symbol('WarriorFactory')
+  WarriorFactory: Symbol('WarriorFactory'),
+  WarriorFactoryFunc: Symbol('WarriorFactoryFunc>')
 };
