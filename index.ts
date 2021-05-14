@@ -20,7 +20,7 @@ const propertyInjectionWarrior = new PropertyInjectionWarrior('Hela');
 const helaWarriorCry = propertyInjectionWarrior.fight();
 
 const appDiv = document.getElementById('app');
-appDiv.innerHTML = `<h1>[from factory class] ${namedWarrior.fight()}</h1>
+appDiv.innerHTML = `<h1>[factory class] ${namedWarrior.fight()}</h1>
                     <h1>[resolved] ${ninja.fight()}</h1>
                     <h1>[factory func] ${teerathWarrior.fight()}</h1>
                     <h1>${helaWarriorCry}</h1>`;
