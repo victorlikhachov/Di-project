@@ -9,7 +9,7 @@ import { PropertyInjectionWarrior } from './property-injection-warrior';
 var ninja = container.get<IWarrior>(TYPES.Warrior);
 
 const factoryGenerator = container.get<IWarriorFactory>(TYPES.WarriorFactory);
-const namedWarrior = factoryGenerator.getWarriorFactory()('Victor');
+const namedWarrior = factoryGenerator.createWarriorByName('Victor');
 
 const warrior_factory_func = container.get<(name: string) => IWarrior>(
   TYPES.WarriorFactoryFunc

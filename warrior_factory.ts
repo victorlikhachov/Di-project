@@ -11,7 +11,7 @@ export class WarriorFactory implements IWarriorFactory {
   ) {
     this._warriorFactory = factoryFn();
   }
-  public getWarriorFactory(): (name: string) => IWarrior {
-    return this._warriorFactory;
+  public createWarriorByName(name: string): IWarrior {
+    return this._warriorFactory(name);
   }
 }
